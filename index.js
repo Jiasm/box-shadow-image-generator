@@ -13,7 +13,6 @@ window.addEventListener('load', function () {
 
     $img.addEventListener('load', _ => {
       // draw image
-      // console.log('done', img.width, img.height)
       let width = $img.width
       let height = $img.height
       $canvas.width = width
@@ -24,12 +23,10 @@ window.addEventListener('load', function () {
 
       let results = getRGBA(pixels)
 
-      let boxShadow = ''
-      // set box-shadow
-      results.forEach(item => {
-        boxShadow += `${item.x}px ${item.y}px 0px 1px rgba(${item.r}, ${item.g}, ${item.b}, ${item.a}),`
-      })
-      $output.style.boxShadow = boxShadow.slice(0, -1)
+      // build box-shadow
+      $output.style.boxShadow = results.map(item =>
+        `${item.x}px ${item.y}px rgba(${item.r}, ${item.g}, ${item.b}, ${item.a})`
+      ).join(',')
     })
 
     $img.id = 'test'
