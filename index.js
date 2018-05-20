@@ -27,7 +27,7 @@ window.addEventListener('load', function () {
 
       // // build box-shadow
       $output.style.boxShadow = results.map(item =>
-        `${item.x}px ${item.y}px 0px ${item.spread}px rgba(${item.target.rgba})`
+        `${item.x}px ${item.y}px 0px ${item.radius}px rgba(${item.target.rgba})`
       ).join(',')
     })
 
@@ -104,12 +104,10 @@ function calc (matrix, startRowIndex = 0, startColIndex = 0) {
 
   tag(matrix, spread, startRowIndex, startColIndex)
 
-  let single = spread === 1
-
   let matrixRadius = spread / 2
 
   return [{
-    spread: matrixRadius,
+    radius: matrixRadius,
     x: matrixRadius + startColIndex,
     y: matrixRadius + startRowIndex,
     target
