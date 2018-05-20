@@ -106,25 +106,15 @@ function calc (matrix, startRowIndex = 0, startColIndex = 0) {
 
   let single = spread === 1
 
-  let matrixSpread = spread / 2
+  let matrixRadius = spread / 2
 
   return [{
-    spread: matrixSpread,
-    x: matrixSpread + startColIndex,
-    y: matrixSpread + startRowIndex,
+    spread: matrixRadius,
+    x: matrixRadius + startColIndex,
+    y: matrixRadius + startRowIndex,
     target
   }].concat(
     calc(matrix, startRowIndex, startColIndex + spread),
     calc(matrix, startRowIndex + spread, startColIndex)
   )
 }
-
-// calc([
-//   [1, 1, 1, 1, 1, 1],
-//   [1, 1, 1, 1],
-//   [1, 1, 1],
-//   [1, 1, 1, 1, 1],
-//   [1, 1, 1, 1],
-//   [1, 1],
-//   [1, 1, 1, 1, 1, 1],
-// ])
